@@ -31,7 +31,7 @@ function emt(optionsObject) {
             if (props) {
                 if (props.handler) {
                     log('Calling click handler');
-                    props.handler(event);
+                    props.handler.call(this, event);
                 }                 
             }
 
@@ -54,7 +54,7 @@ function emt(optionsObject) {
             if (props) {
                 if (props.startHandler) {
                     log('Calling hover start handler');
-                    props.startHandler(event);
+                    props.startHandler.call(this, event);
                 }
 
                 if (props.cssClass) {
@@ -75,7 +75,7 @@ function emt(optionsObject) {
             if (props) {
                 if (props.endHandler) {
                     log('Calling hover end handler');
-                    props.endHandler(event);
+                    props.endHandler.call(this, event);
                 }
 
                 if (props.cssClass) {

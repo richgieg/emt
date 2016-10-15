@@ -45,22 +45,22 @@ emt({
     target: 'a',
     click: {
         mouse: {
-            handler: function(event) { console.log('Mouse click YAY!', event); }
+            handler: function(event) { console.log('Mouse click YAY!', this); }
         },
         touch: {
-            handler: function(event) { console.log('Touch click YAY!', event); }
+            handler: function(event) { console.log('Touch click YAY!', this); }
         }
     },
     hover: {
         mouse: {
             cssClass: 'mouse-hover',
-            startHandler: function(event) { console.log('Mouse hover started!', event); },
-            endHandler: function(event) { console.log('Mouse hover ended!', event); }
+            startHandler: function(event) { console.log('Mouse hover started!', this); },
+            endHandler: function(event) { console.log('Mouse hover ended!', this); }
         },
         touch: {
             cssClass: 'touch-hover',
-            startHandler: function(event) { console.log('Touch hover started!', event); },
-            endHandler: function(event) { console.log('Touch hover ended!', event); }
+            startHandler: function(event) { console.log('Touch hover started!', this); },
+            endHandler: function(event) { console.log('Touch hover ended!', this); }
         }
     },
     logging: true,
