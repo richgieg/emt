@@ -12,7 +12,7 @@ EMT.js is a JavaScript helper library that allows you to easily toggle CSS class
 
 ###Download `emt.js` and reference it in your HTML after jQuery:
 ```
-<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="emt.js"></script>
 ```
 
