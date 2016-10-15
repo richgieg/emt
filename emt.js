@@ -1,6 +1,6 @@
 function emt(optionsObject) {
-    var TOUCH_CLICK = '___@@@emt_click_isTouch';
-    var TOUCH_HOVER = '___@@@emt_hover_isTouch';
+    var TOUCH_CLICK = '___github.com/richgieg/emt/___click_isTouch';
+    var TOUCH_HOVER = '___github.com/richgieg/emt/___hover_isTouch';
 
     function log(str) {
         if (loggingEnabled) {
