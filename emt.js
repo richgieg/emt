@@ -22,10 +22,10 @@ function emt(optionsObject) {
             var props;
             if ($(this).data(TOUCH_CLICK)) {
                 log('Touch click detected ');
-                props = options.touchOptions;
+                props = options.touch;
             } else {
                 log('Mouse click detected');
-                props = options.mouseOptions;
+                props = options.mouse;
             }
 
             if (props) {
@@ -45,10 +45,10 @@ function emt(optionsObject) {
             var props;
             if ($(this).data(TOUCH_HOVER)) {
                 log('Touch hover detected');
-                props = options.touchOptions;
+                props = options.touch;
             } else {
                 log('Mouse hover detected');
-                props = options.mouseOptions;
+                props = options.mouse;
             }
 
             if (props) {
@@ -57,9 +57,9 @@ function emt(optionsObject) {
                     props.startHandler(event);
                 }
 
-                if (props.hoverClass) {
-                    log('Adding hover class: ' + props.hoverClass);
-                    $(this).addClass(props.hoverClass);
+                if (props.cssClass) {
+                    log('Adding hover class: ' + props.cssClass);
+                    $(this).addClass(props.cssClass);
                 }                    
             }
         });
@@ -67,9 +67,9 @@ function emt(optionsObject) {
         collection.on('mouseleave', function(event) {
             var props;
             if ($(this).data(TOUCH_HOVER)) {
-                props = options.touchOptions;
+                props = options.touch;
             } else {
-                props = options.mouseOptions;
+                props = options.mouse;
             }
 
             if (props) {
@@ -78,9 +78,9 @@ function emt(optionsObject) {
                     props.endHandler(event);
                 }
 
-                if (props.hoverClass) {
-                    log('Removing hover class: ' + props.hoverClass);
-                    $(this).removeClass(props.hoverClass);
+                if (props.cssClass) {
+                    log('Removing hover class: ' + props.cssClass);
+                    $(this).removeClass(props.cssClass);
                 }                    
             }
 
@@ -89,10 +89,10 @@ function emt(optionsObject) {
     }
 
     var options = optionsObject || {};
-    var collection = $(options.jQueryCollection);
-    var clickOptions = options.clickOptions || {};
-    var hoverOptions = options.hoverOptions || {};
-    var loggingEnabled = options.loggingEnabled;
+    var collection = $(options.target);
+    var clickOptions = options.click || {};
+    var hoverOptions = options.hover || {};
+    var loggingEnabled = options.logging;
     touchStartHook(collection);
     configureClick(collection, clickOptions);
     configureHover(collection, hoverOptions);

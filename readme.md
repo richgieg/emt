@@ -27,13 +27,13 @@ For a more realistic example, let's assume you want a CSS class called `mouse-ho
 
 ```
 emt({
-    jQueryCollection: $('a'),
-    hoverOptions: {
-        mouseOptions: {
-            hoverClass: 'mouse-hover'
+    target: 'a',
+    hover: {
+        mouse: {
+            cssClass: 'mouse-hover'
         },
-        touchOptions: {
-            hoverClass: 'touch-hover'
+        touch: {
+            cssClass: 'touch-hover'
         }
     }
 });
@@ -42,28 +42,29 @@ emt({
 Here's a complete example that shows all of the options that the `optionsObject` currently supports. Of course, your event handlers will be so much more useful than these:
 ```
 emt({
-    jQueryCollection: $('a'),
-    clickOptions: {
-        mouseOptions: {
+    target: 'a',
+    click: {
+        mouse: {
             handler: function(event) { console.log('Mouse click YAY!', event); }
         },
-        touchOptions: {
+        touch: {
             handler: function(event) { console.log('Touch click YAY!', event); }
         }
     },
-    hoverOptions: {
-        mouseOptions: {
-            hoverClass: 'mouse-hover',
+    hover: {
+        mouse: {
+            cssClass: 'mouse-hover',
             startHandler: function(event) { console.log('Mouse hover started!', event); },
             endHandler: function(event) { console.log('Mouse hover ended!', event); }
         },
-        touchOptions: {
-            hoverClass: 'touch-hover',
+        touch: {
+            cssClass: 'touch-hover',
             startHandler: function(event) { console.log('Touch hover started!', event); },
             endHandler: function(event) { console.log('Touch hover ended!', event); }
         }
     },
-    loggingEnabled: true,
+    logging: true,
 });
 ```
 
+The `target` argument accepts anything that the `jQuery` function accepts (which includes other jQuery objects).
