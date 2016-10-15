@@ -27,15 +27,15 @@ For a more realistic example, let's assume you want a CSS class called `mouse-ho
 
 ```
 emt({
-  jQueryCollection: $('a'),
-  hoverOptions: {
-    mouseOptions: {
-      hoverClass: 'mouse-hover'
-    },
-    touchOptions: {
-      hoverClass: 'touch-hover'
+    jQueryCollection: $('a'),
+    hoverOptions: {
+        mouseOptions: {
+            hoverClass: 'mouse-hover'
+        },
+        touchOptions: {
+            hoverClass: 'touch-hover'
+        }
     }
-  }
 });
 ```
 
