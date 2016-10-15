@@ -5,7 +5,7 @@ Easy Mouse & Touch Handling for Web Sites
 
 ##What is it?
 
-EMT.js is a JavaScript helper library that allows you to easily toggle CSS classes and run code based on whether incoming click and hover events are coming from the mouse or via touch. jQuery is required.
+EMT.js is a JavaScript helper library that allows you to easily toggle CSS classes and run code based on whether incoming click and hover events are coming from the mouse or via touch. Requires jQuery.
 
 
 ##How is it used?
