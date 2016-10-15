@@ -10,15 +10,15 @@ function emt(optionsObject) {
         }
     }
 
-    function touchStartHook(collection) {
-        collection.on('touchstart', function() {
+    function touchStartHook(target) {
+        target.on('touchstart', function() {
             $(this).data(TOUCH_CLICK, true);
             $(this).data(TOUCH_HOVER, true);
         });
     }
 
-    function configureClick(collection, options) {
-        collection.on('click', function(event) {
+    function configureClick(target, options) {
+        target.on('click', function(event) {
             var props;
             if ($(this).data(TOUCH_CLICK)) {
                 log('Touch click detected ');
@@ -40,8 +40,8 @@ function emt(optionsObject) {
     }
 
 
-    function configureHover(collection, options) {
-        collection.on('mouseenter', function(event) {
+    function configureHover(target, options) {
+        target.on('mouseenter', function(event) {
             var props;
             if ($(this).data(TOUCH_HOVER)) {
                 log('Touch hover detected');
@@ -64,7 +64,7 @@ function emt(optionsObject) {
             }
         });
 
-        collection.on('mouseleave', function(event) {
+        target.on('mouseleave', function(event) {
             var props;
             if ($(this).data(TOUCH_HOVER)) {
                 props = options.touch;
@@ -89,11 +89,11 @@ function emt(optionsObject) {
     }
 
     var options = optionsObject || {};
-    var collection = $(options.target);
+    var target = $(options.target);
     var clickOptions = options.click || {};
     var hoverOptions = options.hover || {};
     var loggingEnabled = options.logging;
-    touchStartHook(collection);
-    configureClick(collection, clickOptions);
-    configureHover(collection, hoverOptions);
+    touchStartHook(target);
+    configureClick(target, clickOptions);
+    configureHover(target, hoverOptions);
 }
