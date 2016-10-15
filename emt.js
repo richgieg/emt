@@ -1,4 +1,7 @@
 function emt(optionsObject) {
+    var TOUCH_CLICK = '___@@@emt_click_isTouch';
+    var TOUCH_HOVER = '___@@@emt_hover_isTouch';
+
     function log(str) {
         if (loggingEnabled) {
             var body = $(document.body);
@@ -7,16 +10,17 @@ function emt(optionsObject) {
         }
     }
 
-    function configureClick(collection, options) {
-        var key = '___@@@emt_click_isTouch';
-
+    function touchStartHook(collection) {
         collection.on('touchstart', function() {
-            $(this).data(key, true);
+            $(this).data(TOUCH_CLICK, true);
+            $(this).data(TOUCH_HOVER, true);
         });
+    }
 
+    function configureClick(collection, options) {
         collection.on('click', function(event) {
             var props;
-            if ($(this).data(key)) {
+            if ($(this).data(TOUCH_CLICK)) {
                 log('Touch click detected ');
                 props = options.touchOptions;
             } else {
@@ -31,20 +35,15 @@ function emt(optionsObject) {
                 }                 
             }
 
-            $(this).data(key, false);
+            $(this).data(TOUCH_CLICK, false);
         });
     }
 
+
     function configureHover(collection, options) {
-        var key = '___@@@emt_hover_isTouch';
-
-        collection.on('touchstart', function() {
-            $(this).data(key, true);
-        });
-
         collection.on('mouseenter', function(event) {
             var props;
-            if ($(this).data(key)) {
+            if ($(this).data(TOUCH_HOVER)) {
                 log('Touch hover detected');
                 props = options.touchOptions;
             } else {
@@ -67,7 +66,7 @@ function emt(optionsObject) {
 
         collection.on('mouseleave', function(event) {
             var props;
-            if ($(this).data(key)) {
+            if ($(this).data(TOUCH_HOVER)) {
                 props = options.touchOptions;
             } else {
                 props = options.mouseOptions;
@@ -85,7 +84,7 @@ function emt(optionsObject) {
                 }                    
             }
 
-            $(this).data(key, false);
+            $(this).data(TOUCH_HOVER, false);
         });
     }
 
@@ -94,6 +93,7 @@ function emt(optionsObject) {
     var clickOptions = options.clickOptions || {};
     var hoverOptions = options.hoverOptions || {};
     var loggingEnabled = options.loggingEnabled;
+    touchStartHook(collection);
     configureClick(collection, clickOptions);
     configureHover(collection, hoverOptions);
 }
