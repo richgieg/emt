@@ -16,7 +16,7 @@ EMT.js is a JavaScript helper library that allows you to easily toggle CSS class
 <script src="emt.js"></script>
 ```
 
-####Call the `emt` function, passing in an `optionsObject`:
+Call the `emt` function, passing in an `optionsObject`:
 ```
 emt({});
 ```
