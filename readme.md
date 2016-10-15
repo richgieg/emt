@@ -10,13 +10,13 @@ EMT.js is a JavaScript helper library that allows you to easily toggle CSS class
 
 ##How is it used?
 
-####Download `emt.js` and reference it in your HTML after jQuery:
+###Download `emt.js` and reference it in your HTML after jQuery:
 ```
 <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <script src="emt.js"></script>
 ```
 
-Call the `emt` function, passing in an `optionsObject`:
+###Call the `emt` function, passing in an `optionsObject`:
 ```
 emt({});
 ```
