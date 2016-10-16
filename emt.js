@@ -86,8 +86,14 @@ function emt(optionsObject) {
             }
 
             if (triggerClick) {
+                var clickEvent = jQuery.Event('click');
+
                 log('Triggering click to compensate for iOS behavior');
-                $(this).click();
+                $(this).trigger(clickEvent);
+                if($(this).is('a') && !clickEvent.isDefaultPrevented()) {
+                    window.location.href = this.href;
+                    return false;
+                }
             }
         });
 
