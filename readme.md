@@ -63,7 +63,8 @@ emt({
             endHandler: function(event) { console.log('Touch hover ended!', this); }
         }
     },
-    logging: true,
+    consoleLogging: true,
+    bodyLogging: true
 });
 ```
 
