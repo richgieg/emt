@@ -3,13 +3,18 @@ function emt(optionsObject) {
     var TOUCH_HOVER = '___github.com/richgieg/emt/___TOUCH_HOVER';
     var log;
 
-    function getLogFunction(loggingEnabled) {
-        if (loggingEnabled) {
-            var body = $(document.body);
+    function getLogFunction(options) {
+        var body = $(document.body);
 
+        if (options.consoleLogging || options.bodyLogging) {
             return function(str) {
-                console.log(str);
-                body.append(str + '<br>');
+                if (options.consoleLogging) {
+                    console.log(str);
+                }
+
+                if (options.bodyLogging) {
+                    body.append(str + '<br>');
+                }
             }
         } else {
             return function() {}
@@ -127,7 +132,7 @@ function emt(optionsObject) {
         var clickOptions = options.click || {};
         var hoverOptions = options.hover || {};
 
-        log = getLogFunction(options.logging);
+        log = getLogFunction(options);
         touchStartHook(target);
         configureClick(target, clickOptions);
         configureHover(target, hoverOptions);

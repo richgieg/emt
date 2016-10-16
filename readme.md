@@ -78,4 +78,5 @@ emt({
 - **`cssClass`**: String that defines the CSS class to toggle when a mouse hover or touch hover event occurs, depending on the parent object it is in.
 - **`startHandler`**: Handler function for the beginning of a mouse hover or touch hover, depending on the parent object it is in.
 - **`endHandler`**: Handler function for the end of a mouse hover or touch hover, depending on the parent object it is in.
-- **`logging`**: A boolean that determines whether logging information will be sent to the console and appended to the `body` element.
+- **`consoleLogging`**: A boolean that determines whether logging information will be sent to the console.
+- **`bodyLogging`**: A boolean that determines whether logging information will be appended to the `body` element.
