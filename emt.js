@@ -23,7 +23,7 @@ function emt(optionsObject) {
     }
 
     function configureClick(target, options) {
-        target.on('click', function(event) {
+        target.click(function(event) {
             var props;
             if ($(this).data(TOUCH_CLICK)) {
                 log('Touch click detected');
@@ -45,7 +45,7 @@ function emt(optionsObject) {
     }
 
     function configureHover(target, options) {
-        target.on('mouseenter', function(event) {
+        target.mouseenter(function(event) {
             var props;
             if ($(this).data(TOUCH_HOVER)) {
                 log('Touch hover detected');
@@ -68,7 +68,7 @@ function emt(optionsObject) {
             }
         });
 
-        target.on('mouseleave', function(event) {
+        target.mouseleave(function(event) {
             var props;
             if ($(this).data(TOUCH_HOVER)) {
                 props = options.touch;
