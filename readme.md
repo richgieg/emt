@@ -67,4 +67,15 @@ emt({
 });
 ```
 
-The `target` argument accepts anything that the `jQuery` function accepts (which includes other jQuery objects).
+##`optionsObject` Argument Descriptions
+
+- **`target`**: Defines the target(s) that will have your options applied. Accepts anything that the `jQuery` function accepts (which includes other jQuery objects).
+- **`click`**: Contains `mouse` and `touch` objects that define desired behavior for click activity.
+- **`hover`**: Contains `mouse` and `touch` objects that define desired behavior for hover activity.
+- **`mouse`**: Contains properties that define desired behavior for mouse click or mouse hover activity, depending on the parent object it is in.
+- **`touch`**: Contains properties that define desired behavior for touch click or touch hover activity, depending on the parent object it is in.
+- **`handler`**: Handler function for mouse click or touch click, depending on the parent object it is in.
+- **`cssClass`**: String that defines the CSS class to toggle when a mouse hover or touch hover event occurs, depending on the parent object it is in.
+- **`startHandler`**: Handler function for the beginning of a mouse hover or touch hover, depending on the parent object it is in.
+- **`endHandler`**: Handler function for the end of a mouse hover or touch hover, depending on the parent object it is in.
+- **`logging`**: A boolean that determines whether logging information will be sent to the console and appended to the `body` element.
