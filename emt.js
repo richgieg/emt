@@ -1,8 +1,9 @@
 function emt(optionsObject) {
     var TOUCH_CLICK = '___github.com/richgieg/emt/___click_isTouch';
     var TOUCH_HOVER = '___github.com/richgieg/emt/___hover_isTouch';
+    var log;
 
-    function getLog(loggingEnabled) {
+    function getLogFunction(loggingEnabled) {
         if (loggingEnabled) {
             var body = $(document.body);
             return function(str) {
@@ -21,7 +22,7 @@ function emt(optionsObject) {
         });
     }
 
-    function configureClick(target, options, log) {
+    function configureClick(target, options) {
         target.on('click', function(event) {
             var props;
             if ($(this).data(TOUCH_CLICK)) {
@@ -43,7 +44,7 @@ function emt(optionsObject) {
         });
     }
 
-    function configureHover(target, options, log) {
+    function configureHover(target, options) {
         target.on('mouseenter', function(event) {
             var props;
             if ($(this).data(TOUCH_HOVER)) {
@@ -91,12 +92,15 @@ function emt(optionsObject) {
         });
     }
 
-    var options = optionsObject || {};
-    var target = $(options.target);
-    var clickOptions = options.click || {};
-    var hoverOptions = options.hover || {};
-    var log = getLog(options.logging);
-    touchStartHook(target);
-    configureClick(target, clickOptions, log);
-    configureHover(target, hoverOptions, log);
+    function main(options) {
+        var target = $(options.target);
+        var clickOptions = options.click || {};
+        var hoverOptions = options.hover || {};
+        log = getLogFunction(options.logging);
+        touchStartHook(target);
+        configureClick(target, clickOptions);
+        configureHover(target, hoverOptions);
+    }
+
+    main(optionsObject || {});
 }
