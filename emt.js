@@ -6,6 +6,7 @@ function emt(optionsObject) {
     function getLogFunction(loggingEnabled) {
         if (loggingEnabled) {
             var body = $(document.body);
+
             return function(str) {
                 console.log(str);
                 body.append(str + '<br>');
@@ -30,6 +31,7 @@ function emt(optionsObject) {
     function configureClick(target, options) {
         target.click(function(event) {
             var props;
+
             if ($(this).data(TOUCH_CLICK)) {
                 log('Touch click detected');
                 props = options.touch;
@@ -51,6 +53,7 @@ function emt(optionsObject) {
 
     function configureHover(target, options, iosDevice) {
         var is_iOS = is_iOSDevice();
+
         if (is_iOS) {
             log('iOS device detected');
         }
@@ -58,6 +61,7 @@ function emt(optionsObject) {
         target.mouseenter(function(event) {
             var props;
             var triggerClick = false;
+
             if ($(this).data(TOUCH_HOVER)) {
                 log('Touch hover detected');
                 props = options.touch;
@@ -89,6 +93,7 @@ function emt(optionsObject) {
 
         target.mouseleave(function(event) {
             var props;
+
             if ($(this).data(TOUCH_HOVER)) {
                 props = options.touch;
             } else {
@@ -115,6 +120,7 @@ function emt(optionsObject) {
         var target = $(options.target);
         var clickOptions = options.click || {};
         var hoverOptions = options.hover || {};
+
         log = getLogFunction(options.logging);
         touchStartHook(target);
         configureClick(target, clickOptions);
