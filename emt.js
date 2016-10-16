@@ -15,6 +15,11 @@ function emt(optionsObject) {
         }
     }
 
+    function is_iOSDevice() {
+        var device = navigator.userAgent.toLowerCase();
+        return device.match(/(iphone|ipod|ipad)/) !== null;
+    }
+
     function touchStartHook(target) {
         target.on('touchstart', function() {
             $(this).data(TOUCH_CLICK, true);
@@ -44,12 +49,21 @@ function emt(optionsObject) {
         });
     }
 
-    function configureHover(target, options) {
+    function configureHover(target, options, iosDevice) {
+        var is_iOS = is_iOSDevice();
+        if (is_iOS) {
+            log('iOS device detected');
+        }
+
         target.mouseenter(function(event) {
             var props;
+            var triggerClick = false;
             if ($(this).data(TOUCH_HOVER)) {
                 log('Touch hover detected');
                 props = options.touch;
+                if (is_iOS) {
+                    triggerClick = true;
+                }
             } else {
                 log('Mouse hover detected');
                 props = options.mouse;
@@ -65,6 +79,11 @@ function emt(optionsObject) {
                     log('Adding hover class: ' + props.cssClass);
                     $(this).addClass(props.cssClass);
                 }                    
+            }
+
+            if (triggerClick) {
+                log('Triggering click to compensate for iOS behavior');
+                $(this).click();
             }
         });
 
